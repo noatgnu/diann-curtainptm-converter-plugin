@@ -40,12 +40,6 @@ def main():
     )
 
     parser.add_argument(
-        "--custom_modification",
-        default=None,
-        help="Custom modification identifier (overrides modification_type)"
-    )
-
-    parser.add_argument(
         "--fasta_file",
         default=None,
         help="Path to FASTA file (optional, will fetch from UniProt if not provided)"
@@ -96,7 +90,7 @@ def main():
 
     args = parser.parse_args()
 
-    modification = args.custom_modification if args.custom_modification else args.modification_type
+    modification = args.modification_type
 
     output_path = Path(args.output_folder)
     output_path.mkdir(parents=True, exist_ok=True)
@@ -127,6 +121,7 @@ def main():
 
         print(f"\nConversion completed successfully!")
         print(f"Output file: {output_file}")
+        sys.exit(0)
 
     except Exception as e:
         print(f"\nError during conversion: {str(e)}", file=sys.stderr)
