@@ -35,8 +35,7 @@ Convert DIA-NN PTM differential analysis output to CurtainPTM upload format. Pro
 |------|-------|------|----------|---------|------------|
 | `pr_file` | PR File (Differential Analysis) | file | Yes | - | Always visible |
 | `report_file` | Report File (Optional) | file | No | - | Always visible |
-| `modification_type` | Modification Type | select (UniMod:21, UniMod:1, UniMod:35, UniMod:4) | Yes | UniMod:21 | Always visible |
-| `custom_modification` | Custom Modification (Advanced) | text | No | - | Visible when `modification_type` = `custom` |
+| `modification_type` | Modification Type | text | Yes | UniMod:21 | Always visible |
 | `fasta_file` | FASTA File (Optional) | file | No | - | Always visible |
 | `localization_score_col` | Localization Score Column | text | No | PTM.Site.Confidence | Always visible |
 | `multiple_site` | Process Multiple Sites | boolean | No | false | Always visible |
@@ -59,15 +58,9 @@ DIA-NN report file containing protein sequences and PTM.Site.Confidence scores
 
 #### Modification Type (`modification_type`)
 
-Type of modification to process (UniMod:21 = Phosphorylation, UniMod:1 = Acetylation, UniMod:35 = Oxidation, UniMod:4 = Carbamidomethyl)
+Type of modification to process using UniMod identifier (e.g., UniMod:21 for Phosphorylation, UniMod:1 for Acetylation, UniMod:35 for Oxidation, UniMod:4 for Carbamidomethyl)
 
-- **Options**: `UniMod:21`, `UniMod:1`, `UniMod:35`, `UniMod:4`
-
-#### Custom Modification (Advanced) (`custom_modification`)
-
-Specify a custom UniMod modification identifier
-
-- **Placeholder**: `e.g., UniMod:123`
+- **Placeholder**: `UniMod:21`
 
 #### FASTA File (Optional) (`fasta_file`)
 
@@ -121,7 +114,7 @@ Size of the sequence window around modification sites (must be odd number). Defa
 
 Dependencies are defined in: `requirements.txt`
 
-- `curtainutils>=0.2.0`
+- `curtainutils>=0.1.24`
 - `pandas>=2.0.0`
 - `click>=8.0.0`
 

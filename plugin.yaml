@@ -31,25 +31,11 @@ inputs:
 
   - name: modification_type
     label: Modification Type
-    type: select
+    type: text
     required: true
     default: UniMod:21
-    options:
-      - UniMod:21
-      - UniMod:1
-      - UniMod:35
-      - UniMod:4
-    description: Type of modification to process (UniMod:21 = Phosphorylation, UniMod:1 = Acetylation, UniMod:35 = Oxidation, UniMod:4 = Carbamidomethyl)
-
-  - name: custom_modification
-    label: Custom Modification (Advanced)
-    type: text
-    required: false
-    placeholder: e.g., UniMod:123
-    description: Specify a custom UniMod modification identifier
-    visibleWhen:
-      field: modification_type
-      equals: custom
+    placeholder: UniMod:21
+    description: Type of modification to process using UniMod identifier (e.g., UniMod:21 for Phosphorylation, UniMod:1 for Acetylation, UniMod:35 for Oxidation, UniMod:4 for Carbamidomethyl)
 
   - name: fasta_file
     label: FASTA File (Optional)

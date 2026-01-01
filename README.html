@@ -168,18 +168,10 @@
 <tr>
 <td><code>modification_type</code></td>
 <td>Modification Type</td>
-<td>select (UniMod:21, UniMod:1, UniMod:35, UniMod:4)</td>
+<td>text</td>
 <td>Yes</td>
 <td>UniMod:21</td>
 <td>Always visible</td>
-</tr>
-<tr>
-<td><code>custom_modification</code></td>
-<td>Custom Modification (Advanced)</td>
-<td>text</td>
-<td>No</td>
-<td>-</td>
-<td>Visible when <code>modification_type</code> = <code>custom</code></td>
 </tr>
 <tr>
 <td><code>fasta_file</code></td>
@@ -245,14 +237,9 @@
 <h4 id="report-file-optional-report-file">Report File (Optional) (<code>report_file</code>)</h4>
 <p>DIA-NN report file containing protein sequences and PTM.Site.Confidence scores</p>
 <h4 id="modification-type-modification-type">Modification Type (<code>modification_type</code>)</h4>
-<p>Type of modification to process (UniMod:21 = Phosphorylation, UniMod:1 = Acetylation, UniMod:35 = Oxidation, UniMod:4 = Carbamidomethyl)</p>
+<p>Type of modification to process using UniMod identifier (e.g., UniMod:21 for Phosphorylation, UniMod:1 for Acetylation, UniMod:35 for Oxidation, UniMod:4 for Carbamidomethyl)</p>
 <ul>
-<li><strong>Options</strong>: <code>UniMod:21</code>, <code>UniMod:1</code>, <code>UniMod:35</code>, <code>UniMod:4</code></li>
-</ul>
-<h4 id="custom-modification-advanced-custom-modification">Custom Modification (Advanced) (<code>custom_modification</code>)</h4>
-<p>Specify a custom UniMod modification identifier</p>
-<ul>
-<li><strong>Placeholder</strong>: <code>e.g., UniMod:123</code></li>
+<li><strong>Placeholder</strong>: <code>UniMod:21</code></li>
 </ul>
 <h4 id="fasta-file-optional-fasta-file">FASTA File (Optional) (<code>fasta_file</code>)</h4>
 <p>Protein sequence FASTA file. If not provided, sequences will be fetched from UniProt automatically.</p>
@@ -305,7 +292,7 @@
 <h3 id="python-dependencies-external-file">Python Dependencies (External File)</h3>
 <p>Dependencies are defined in: <code>requirements.txt</code></p>
 <ul>
-<li><code>curtainutils&gt;=0.2.0</code></li>
+<li><code>curtainutils&gt;=0.1.24</code></li>
 <li><code>pandas&gt;=2.0.0</code></li>
 <li><code>click&gt;=8.0.0</code></li>
 </ul>
