@@ -21,7 +21,7 @@
 
 ## Description
 
-Convert DIA-NN PTM differential analysis output to CurtainPTM upload format. Processes modified sequences, maps PTM positions to protein sequences, and generates sequence windows around modification sites.
+Convert DIA-NN PTM differential analysis output to CurtainPTM upload format. Processes modified sequences, maps PTM positions to protein sequences, and generates sequence windows around modification sites. Based on: Phung et al. (2024) PNAS 121(7):e2312676121. Repository: https://github.com/noatgnu/curtain-utils
 
 ## Runtime
 
