@@ -1,0 +1,97 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "DIA-NN to CurtainPTM Converter pipeline parameters",
+    "description": "Convert DIA-NN PTM differential analysis output to CurtainPTM upload format. Processes modified sequences, maps PTM positions to protein sequences, and generates sequence windows around modification sites. Based on: Phung et al. (2024) PNAS 121(7):e2312676121. Repository: https://github.com/noatgnu/curtain-utils",
+    "type": "object",
+    "definitions": {
+        "plugin_parameters": {
+            "title": "Plugin parameters",
+            "description": "Parameters for the DIA-NN to CurtainPTM Converter plugin.",
+            "type": "object",
+            "properties": {
+                "fasta_file": {
+                    "type": "string",
+                    "description": "Protein sequence FASTA file. If not provided, sequences will be fetched from UniProt automatically.",
+                    "format": "file-path"
+                },
+                "localization_score_col": {
+                    "type": "string",
+                    "description": "Column name containing PTM site confidence scores in the report file",
+                    "default": "PTM.Site.Confidence"
+                },
+                "modification_type": {
+                    "type": "string",
+                    "description": "Type of modification to process using UniMod identifier (e.g., UniMod:21 for Phosphorylation, UniMod:1 for Acetylation, UniMod:35 for Oxidation, UniMod:4 for Carbamidomethyl)",
+                    "default": "UniMod:21"
+                },
+                "multiple_site": {
+                    "type": "boolean",
+                    "description": "Enable this to process peptides with multiple modification sites. When enabled, all sites will be reported in semicolon-separated format.",
+                    "default": false
+                },
+                "output_filename": {
+                    "type": "string",
+                    "description": "Name of the output file (will be created in the output folder)",
+                    "default": "curtainptm_input.txt"
+                },
+                "output_meta": {
+                    "type": "boolean",
+                    "description": "Generate an additional metadata file with intensity information from the report file. Only works when a report file is provided.",
+                    "default": false
+                },
+                "pr_file": {
+                    "type": "string",
+                    "description": "DIA-NN precursor-level differential analysis file containing Modified.Sequence, Precursor.Id, and Protein.Group columns",
+                    "format": "file-path"
+                },
+                "report_file": {
+                    "type": "string",
+                    "description": "DIA-NN report file containing protein sequences and PTM.Site.Confidence scores",
+                    "format": "file-path"
+                },
+                "sequence_window_size": {
+                    "type": "number",
+                    "description": "Size of the sequence window around modification sites (must be odd number). Default is 21 (10 residues before + modification + 10 after).",
+                    "default": 21
+                },
+                "uniprot_columns": {
+                    "type": "string",
+                    "description": "Comma-separated list of UniProt columns to retrieve when fetching sequences online",
+                    "default": "accession,id,sequence,protein_name"
+                }
+            }
+        }
+    },
+    "properties": {
+        "fasta_file": {
+            "$ref": "#/definitions/plugin_parameters/properties/fasta_file"
+        },
+        "localization_score_col": {
+            "$ref": "#/definitions/plugin_parameters/properties/localization_score_col"
+        },
+        "modification_type": {
+            "$ref": "#/definitions/plugin_parameters/properties/modification_type"
+        },
+        "multiple_site": {
+            "$ref": "#/definitions/plugin_parameters/properties/multiple_site"
+        },
+        "output_filename": {
+            "$ref": "#/definitions/plugin_parameters/properties/output_filename"
+        },
+        "output_meta": {
+            "$ref": "#/definitions/plugin_parameters/properties/output_meta"
+        },
+        "pr_file": {
+            "$ref": "#/definitions/plugin_parameters/properties/pr_file"
+        },
+        "report_file": {
+            "$ref": "#/definitions/plugin_parameters/properties/report_file"
+        },
+        "sequence_window_size": {
+            "$ref": "#/definitions/plugin_parameters/properties/sequence_window_size"
+        },
+        "uniprot_columns": {
+            "$ref": "#/definitions/plugin_parameters/properties/uniprot_columns"
+        }
+    }
+}
